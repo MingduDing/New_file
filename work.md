@@ -1,0 +1,64 @@
+OpenCV中的Haar分类器 = 类Haar特征 + 积分图方法 + AdaBoost + 级联
+
+Viola-Jones分类器算法要点： 
+1． 使用类Haar输入特征：对矩形图像区域的和或差进行阈值化； 
+2． 积分图像技术加速了矩形图像区域的45度旋转的值的计算，这个图像结构被用来加速类Haar输入特征的计算。 
+3． 使用Adaboost来创建二分类问题（人脸与非人脸）的分类器节点（高通过率，低拒绝率）。 
+4． 把分类器节点组成筛选式级联（在筛选式级联里，一个节点是Adaboost类型的一组分类器）。换句话说：第一组分类器是最优，能通过包含物体的图像区域，同时允许一些不包含物体的图像通过；第二组分类器次优分类器，也有较低的拒绝率；以此类推。只要图像通过了整个级联，则认为里面有物体。这保证了级联的运行速度可以很快，因为它一般可以在前几步就可以拒绝不包含物体的图像区域，而不必走完整个级联。
+
+在VJ之前识别率就很高了，亮点不在识别率，而在识别效率。一是用Haar特征， 计算简单，又引入积分图技术进行加速。二是使用AdaBoost将很容易构造出的弱分类器组合成强分类器。三是使用级联cascade策略将构造这些强分类器的退化决策树，使不满足的区域直接被排除，大大提高计算效率。
+
+
+
+​	Good morning, my name is Dingmingdu, it is really a great honor to have this opportunity for a interview, i would like to answer whatever you may raise, and i hope i can make a good performance today, eventually enroll in this prestigious university in september.
+
+　　now i will introduce myself briefly,i am 21 years old,born in heilongjiang province ,northeast of china,and i am curruently a senior student at beijing XX uni.my major is packaging engineering.and i will receive my bachelor degree after my graduation in june.in the past 4 years,i spend most of my time on study,i have passed CET4/6 with a ease. and i have acquired basic knowledge of packaging and publishing both in theory and in practice. besides, i have attend several packaging exhibition hold in Beijing, this is our advantage study here, i have taken a tour to some big factory and company. through these i have a deeply understanding of domestic packaging industry. compared to developed countries such as us, unfortunately, although we have made extraordinary progress since 1978,our packaging industry are still underdeveloped, mess, unstable, the situation of employees in this field are awkard. but i have full confidence in a bright future if only our economy can keep the growth pace still.
+
+　　i guess you maybe interested in the reason itch to law, and what is my plan during graduate study life, i would like to tell you that pursue law is one of my lifelong goal,i like my major packaging and i wont give up,if i can pursue my master degree here i will combine law with my former education. i will work hard in thesefields ,patent ,trademark, copyright, on the base of my years study in department of p&p, my character? i cannot describe it well, but i know i am optimistic and confident. sometimes i prefer to stay alone, reading, listening to music, but i am not lonely, i like to chat with my classmates, almost talk everything ,my favorite pastime is valleyball,playing cards or surf online. through college life,i learn how to balance between study and entertainment. by the way, i was a actor of our amazing drama club. i had a few glorious memory on stage. that is my pride.
+
+
+
+​	Good morning!
+
+　　It is really my honor to have this opportunity for a interview,
+
+　　I hope i can make a good performance today. I’m confident that I can succeed.
+
+　　Now i will introduce myself briefly.
+
+　　I am 26 years old,born in shandong province.
+
+　　I was graduated from qingdao university. my major is electronic.and i got my bachelor degree after my graduation in the year of 20**.
+
+　　I spend most of my time on study,i have passed CET4/6 . and i have acquired basic knowledge of my major during my school time.
+
+　　In July 2013, I begin work for a small private company as a technical support engineer in QingDao city.Because I’m capable of more responsibilities, so I decided to change my job.
+
+　　And in August 2004,I left QingDao to BeiJing and worked for a foreign enterprise as a automation software test engineer.Because I want to change my working environment, I’d like to find a job which is more challenging. Morover Motorola is a global company, so I feel I can gain the most from working in this kind of company ennvironment. That is the reason why I come here to compete for this position.
+
+　　I think I’m a good team player and I’m a person of great honesty to others. Also I am able to work under great pressure.
+
+　　That’s all. Thank you for giving me the chance.
+
+## 机器学习
+
+pandas库 	缺失值，数据转换，重复值（不需要去重）
+
+**sklearn库** 	python中机器学习算法库，对于特征的处理提供了强大的接口，必须先安装numpy和pandas
+
+| scikit-learn 包含的算法       |
+| ----------------------------- |
+| classification 分类           |
+| Regression 回归               |
+| Clustering 聚类               |
+| Dimensionality reduction 降维 |
+| Model selection 模型选择      |
+| Preprocession 特征工程        |
+
+
+
+#### 数据的特征工程
+
+**特征工程**是将原始数据转化为更好地代表预测模型的潜在问题的特征的过程，从而提高了对未知数据的预测准确性。
+
+特征抽取：文本、字符串、字典类型的数据转化为数字。
