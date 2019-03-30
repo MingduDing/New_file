@@ -55,10 +55,73 @@ pandas库 	缺失值，数据转换，重复值（不需要去重）
 | Model selection 模型选择      |
 | Preprocession 特征工程        |
 
-
+结构：特征值 + 目标值
 
 #### 数据的特征工程
 
-**特征工程**是将原始数据转化为更好地代表预测模型的潜在问题的特征的过程，从而提高了对未知数据的预测准确性。
+**特征工程**：是将原始数据转化为更好地代表预测模型的潜在问题的特征的过程，从而提高了对未知数据的预测准确性。
 
-特征抽取：文本、字符串、字典类型的数据转化为数字。
+**特征抽取**：文本、字符串、字典类型的数据转化为数字
+
+* 字典特征抽取：对字典数据进行特征值化。（`sklearn.feature_extraction.DictVectorizer`)
+
+  DictVectorizer(sparse=True,...)
+
+  1. **Dictvectorizer.fit_transform(X) **
+
+  ​	X：字典或包含字典的迭代器
+
+  ​	返回值：返回sparse矩阵
+
+  2. Dictvectorizer.inverse_transform(X)
+
+  ​	X：array数组或sparse矩阵
+
+  ​	返回值：转换之前的数据格式
+
+  3. Dictvectorizer.get_feature_names(X) 
+
+  ​	返回类别名称
+
+  4. Dictvectorizer.transform(X)
+
+  ​	按照原先的标准转换
+
+* 文本特征提取：对文本数据进行特征值化。（`sklearn.feature_extraction.text.CountVectorizer`）
+
+  **文本分类、情感分析**
+
+  CountVectorizer()
+
+  1. **CountVectorizer.fit_transform(X)**
+
+     X：文本或包含文本字符串的可迭代对象
+
+     返回值：返回sparse矩阵
+
+  2. CountVectorizer.inverse_transform(X)
+
+     X：array数组或sparse矩阵
+
+     返回值：返回sparse矩阵
+
+  3. CountVectorizer.get_feature_names(X)
+
+     返回值：单词列表
+
+```java
+import jieba
+jieba.cut("我是一个程序员")
+# 返回值：词语生成器，弥补中文无空格无法把词语分开的缺陷
+```
+
+​     
+
+
+* 流程：
+
+   1. 实例化类CountVectorizer
+
+   2. 调用fit_transform方法输入数据并转换
+
+      注意返回格式，利用toarray()进行sparse矩阵转换为array数组。
