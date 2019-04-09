@@ -36,10 +36,17 @@ ssh-keygen -t rsa -C 'dingmingdugithub@163.com'。连续回车
 
 ```c++
 git init
+
 touch README.md
+
 git add. # 整个文件夹 / git add my_file.txt # 某一个文件
+
 git commit -m 'first_commit' # 引号内容是备注，可以修改
+
 git remote add origin git@github.com:MingduDing/New_file.git
+
+git remote add origin git@github.com:MingduDing/New_file.git
+
 git push -u origin master # 仓库为空，首次推送，加上`-u`参数
 ```
 
