@@ -33,7 +33,7 @@
 
 所消耗时间大小关系：
 
-**$O(1) < O(logn) < O(n) < O(nlogn) < O(n^2) < O(n^3) < O(2^n) < O(n!) < O(n^n)$**
+**$O(1) < O(logn) < O(n) < O(nlogn) < O(n^2) < O(n^3) < O(2^n) < O(n!) < O(n^n)​$**
 
 ```python
 count = 0
@@ -41,7 +41,7 @@ while count < n:
     count = count * 2
 ```
 
-当$2^x=n$时，得到$x=logn$，时间复杂度就是$logn$。
+当$2^x=n​$时，得到$x=logn​$，时间复杂度就是$logn​$。
 
 ## 数据结构
 
@@ -80,7 +80,7 @@ while count < n:
 
 ## 排序与搜索
 
-**稳定性：**稳定排序算法会让原本有相等键值的纪录维持相对次序。即当有两个相等键值的纪录R和S，且原本的列表中R出现在S之前，且排序过的列表中R也将会是在S之前。
+**稳定性：**稳定排序算法会让原本有相等键值的记录维持相对次序。即当有两个相等键值的记录R和S，且原本的列表中R出现在S之前，且排序过的列表中R也将会是在S之前。
 
 #### 冒泡排序
 
@@ -129,18 +129,85 @@ def select_sort(alist):
 ```python
 def insert_sort(alist):
     """插入排序"""
-    
+    for j in range(1, len(alist)):
+        for i in range(j, 0, -1):
+            if alist[j] < alist[j-1]:
+                alist[j], alist[j-1] = alist[j-1], alist[j]
+            else:
+                break
 ```
 
+最优时间复杂度：$O(n)$（升序排列，序列已经处于升序状态）
 
+最坏时间复杂度：$O(n^2)​$
+
+稳定性：**√**
 
 #### 快速排序
 
+```python
+def quick_sort(alist, first, last):
+	"""快速排序"""	
+	if first >= last:
+		return
+	mid_value = alist[first]
+	low = first
+	high = last
+	
+	while low < high:
+		# high游标左移
+		while low < high and alist[high] >= mid_value:
+			high -= 1
+		alist[low] = alist[high]		
+		# low游标右移
+		while low < high and alist[low] < mid_value:
+			low += 1
+		alist[high] = alist[low]
+	
+	# 循环退出，low==high
+	alist[low] = mid_value	
+	# 对low左边的列表执行快速排序
+	quick_sort(alist, first, low-1)	
+	# 对low右边的列表执行快速排序
+	quick_sort(alist, low+1, last)
 
+if __name__ == "__main__":
+	li = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+	print li
+	quick_sort(li, 0, len(li)-1)
+	print li 
+```
+
+最优时间复杂度：$O(nlogn)$
+
+最坏时间复杂度：$O(n^2)$
+
+稳定性：**X**
 
 #### 希尔排序
 
+```python
+def shell_sort(alist):
+	"""希尔排序"""
+	n = len(alist)
+	gap = n / 2
+	while gap > 0:
+		for j in range(gap, n):
+			i = j
+			while i > 0:
+				if alist[i] < alist[i-gap]:
+					alist[i], alist[i-gap] = alist[i-gap], alist[i]
+					i -= gap
+				else:
+					break
+		gap /= 2
+```
 
+最优时间复杂度：$$O(n^{1.3})$$（根据步长序列的不同而不同）
+
+最坏时间复杂度：$O(n^2)​$
+
+稳定性：**X**
 
 #### 归并排序
 

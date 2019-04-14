@@ -133,4 +133,20 @@ t.prt()  # <class '__main__.Test'>
      "{'a':1, 'b':2}"
      ```
 
+## 递归
+
+```python
+def digui(num):
+	print(num)
+	if num > 0:
+		digui(num-1)
+	else:
+		print('------')
+	print(num)
+
+digui(3),
+# 3 2 1 0 ------ 0 1 2 3
+```
+
+![](https://images2017.cnblogs.com/blog/1272988/201711/1272988-20171108213648231-213946465.png)
 
