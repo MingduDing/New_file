@@ -211,3 +211,63 @@ def shell_sort(alist):
 
 #### 归并排序
 
+```python
+def merge_sort(alist):
+	"""归并排序"""
+	n = len(alist)
+	if n <= 1:
+		return alist
+	mid = n / 2
+	# left_li 采用归并排序后形成的有序的新的列表
+	left_li = merge_sort(alist[:mid])
+	# right_li 采用归并排序后形成的有序的新的列表
+	right_li = merge_sort(alist[mid:])
+	# 将两个有序的子序列合并为一个整体，利用两个指针
+	left_pointer, right_pointer = 0, 0
+	result = []
+	
+	while left_pointer < len(left_li) and right_pointer < len(right_li):
+		if left_li[left_pointer] <= right_li[right_pointer]:
+			result.append(left_li[left_pointer])
+			left_pointer += 1
+		else:
+			result.append(right_li[right_pointer])
+			right_pointer += 1
+			
+	result += left_li[left_pointer:]
+	result += right_li[right_pointer:]
+	return result
+
+if __name__ == "__main__":
+	li = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+	print li
+	sorted_li = merge_sort(li) 
+	print sorted_li
+```
+
+最优时间复杂度：$O(nlogn)​$
+
+最坏时间复杂度：$O(nlogn)$
+
+稳定性：**√**
+
+| 排序方法 | 平均情况            | 最优情况     | 最坏情况   | 辅助情况         | 稳定性 |
+| -------- | ------------------- | ------------ | ---------- | ---------------- | ------ |
+| 冒泡排序 | $O(n^2)$            | $O(n)$       | $O(n^2)$   | $O(1)$           | 稳定   |
+| 选择排序 | $O(n^2)$            | $O(n^2)$     | $O(n^2)$   | $O(1)$           | 不稳定 |
+| 插入排序 | $O(n^2)$            | $O(n)$       | $O(n^2)$   | $O(1)$           | 稳定   |
+| 希尔排序 | $O(nlogn)$~$O(n^2)$ | $O(n^{1.3})$ | $O(n^2)$   | $O(1)$           | 不稳定 |
+| 堆排序   | $O(nlogn)$          | $O(nlogn)$   | $O(nlogn)$ | $O(1)$           | 不稳定 |
+| 归并排序 | $O(nlogn)$          | $O(nlogn)$   | $O(nlogn)$ | $O(n)$           | 稳定   |
+| 快速排序 | $O(nlogn)$          | $O(nlogn)$   | $O(n^2)$   | $O(logn)$~$O(n)​$ | 不稳定 |
+
+ ## 树
+
+* 无序树
+* 有序树
+  * 二叉树
+    * 完全二叉树
+    * 平衡二叉树（AVL树）
+    * 排序二叉树
+  * 霍夫曼树
+  * B树
