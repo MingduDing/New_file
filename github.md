@@ -39,13 +39,17 @@ git init
 
 touch README.md
 
-git add. # 整个文件夹 / git add my_file.txt # 某一个文件
+git remote add origin git@github.com:MingduDing/New_file.git
+
+git pull --rebase origin master
+
+git pull origin master
+
+git add . # 整个文件夹 / git add my_file.txt # 某一个文件
 
 git commit -m 'first_commit' # 引号内容是备注，可以修改
 
-git remote add origin git@github.com:MingduDing/New_file.git
-
-git remote add origin git@github.com:MingduDing/New_file.git
+git push origin master
 
 git push -u origin master # 仓库为空，首次推送，加上`-u`参数
 ```
